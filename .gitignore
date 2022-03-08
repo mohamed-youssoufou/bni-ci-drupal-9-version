@@ -1,5 +1,5 @@
 vendor/*
 web/core/*
-web/librairies/*
+web/libraries/*
 web/modules/contrib/*
 web/themes/contrib/*
