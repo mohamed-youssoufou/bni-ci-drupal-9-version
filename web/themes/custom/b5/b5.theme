@@ -78,3 +78,15 @@ function b5_preprocess_menu__account(&$variables){
     $variables["citations"][$id]["field_photo"] = File::load(\Drupal::entityTypeManager()->getStorage('node')->load($nid)->get('field_photo')->target_id)->getFileUri();
   }
 }
+
+function b5_preprocess_menu__main(&$variables){
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', 'information_generale');
+  $entity_ids = $query->execute();
+  foreach($entity_ids as $id => $nid){
+    // dump(\Drupal::entityTypeManager()->getStorage('node')->load($nid));die;
+    $variables["infos"][$id]["icone"] = \Drupal::entityTypeManager()->getStorage('node')->load($nid)->get('field_icone')->value;
+    $variables["infos"][$id]["info"] = \Drupal::entityTypeManager()->getStorage('node')->load($nid)->get('field_info')->value;
+    $variables["infos"][$id]["lien"] = \Drupal::entityTypeManager()->getStorage('node')->load($nid)->get('field_lien')->value;
+  }
+}
