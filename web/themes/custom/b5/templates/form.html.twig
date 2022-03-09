@@ -82,3 +82,69 @@
 <form{{ attributes }}>
   {{ children }}
 </form>
+{% block javascripts %}
+    <script>
+		let professionField = document.querySelector('#edit-field-profession')
+		let etablissement = document.querySelector('.form-item-field-etablissement')
+		let filiere = document.querySelector('.form-item-field-filiere')
+		let situation_mat = document.querySelector('.form-item-field-situation-matrimoniale')
+		let nombre_enfant = document.querySelector('.form-item-field-nombre-d-enfant-0-value')
+		let nombre_fille = document.querySelector('.form-item-field-nombre-de-fille-0-value')
+		let nombre_garcon = document.querySelector('.form-item-field-nombre-de-garcon-0-value')
+		let nombre_adoption = document.querySelector('.form-item-field-nombre-d-adoption-0-value')
+		let nombre_direct = document.querySelector('.form-item-field-nombre-de-tutel-direct-0-value')
+		let nombre_indirect = document.querySelector('.form-item-field-nombre-de-tutel-indirect-0-value')
+
+		professionField.addEventListener('change', function(e){
+			let selected = getSelectedOption(professionField).textContent.toUpperCase();
+			if(selected == "Travailleur".toUpperCase()){
+				etablissement.style.display = "none"
+				filiere.style.display = "none"
+				situation_mat.style.display = "block"
+				nombre_enfant.style.display = "block"
+				nombre_fille.style.display = "block"
+				nombre_garcon.style.display = "block"
+				nombre_adoption.style.display = "block"
+				nombre_direct.style.display = "block"
+				nombre_indirect.style.display = "block"
+			}else if(selected == "Eleve".toUpperCase()){
+				etablissement.style.display = "block"
+				filiere.style.display = "none"
+				situation_mat.style.display = "none"
+				nombre_enfant.style.display = "none"
+				nombre_fille.style.display = "none"
+				nombre_garcon.style.display = "none"
+				nombre_adoption.style.display = "none"
+				nombre_direct.style.display = "none"
+				nombre_indirect.style.display = "none"
+			}else{
+				etablissement.style.display = "block"
+				filiere.style.display = "block"
+				situation_mat.style.display = "none"
+				nombre_enfant.style.display = "none"
+				nombre_fille.style.display = "none"
+				nombre_garcon.style.display = "none"
+				nombre_adoption.style.display = "none"
+				nombre_direct.style.display = "none"
+				nombre_indirect.style.display = "none"
+			}
+		})
+		
+		if(getSelectedOption(professionField).textContent.toUpperCase() == "Travailleur".toUpperCase()){
+			console.log("oki")
+			etablissement.style.display = "none"
+			filiere.style.display = "none"
+		}
+
+		function getSelectedOption(sel) {
+			var opt;
+			for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+				opt = sel.options[i];
+				if ( opt.selected === true ) {
+					break;
+				}
+			}
+			return opt;
+		}
+	</script>
+{% endblock %}
