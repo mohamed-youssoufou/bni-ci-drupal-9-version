@@ -669,7 +669,7 @@
       {% for item in content["#items"] %}
         {% if item.title == "Mes Informations" %}
           <li>
-              <a href="{{user}} {{ item.in_active_trail == true ? 'active' : '' }}">
+              <a href="/user/{{user.id()}} {{ item.in_active_trail == true ? 'active' : '' }}">
                 <i class="fa fa-home"></i>
                 <span>{{ item.title }}</span>
                 <small>Allez à {{ item.title }}</small>

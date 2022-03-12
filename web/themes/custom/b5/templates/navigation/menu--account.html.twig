@@ -37,7 +37,7 @@
       		{% endfor %}
 			{% if items["user.page"].title == "Mon compte" %}
 				<div class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mon menu</a>
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Salut, {{user.getAccountName()|capitalize}}</a>
 				<div class="dropdown-menu m-0">
             {% for item in items %}
               {% if loop.index > 4 %}

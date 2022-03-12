@@ -285,9 +285,6 @@
     "extra": {
         "enable-patching": true,
         "patches": {
-            "drupal/charts": {
-                "drupal-9-charts-js-preview": "https://www.drupal.org/files/charts_ajax_load-2050871.patch"
-            }
         },
         "drupal-scaffold": {
             "locations": {

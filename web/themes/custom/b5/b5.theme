@@ -7,7 +7,8 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\Entity\File;
-
+use Drupal\user\Entity\User;
+use Symfony\Component\Validator\Constraints\Length;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -62,11 +63,12 @@ function bootstrap_barrio_subtheme_form_system_theme_settings_alter(&$form, Form
 //   // dump($variables["items"][0]["content"]);die;
 // }
 
-function b5_preprocess_block(&$variables){
-  $variables['user'] = "/user/".\Drupal::currentUser()->id();
-}
+// function b5_preprocess_block(&$variables){
+//   $variables['user'] = "/user/".\Drupal::currentUser()->id();
+// }
 
 function b5_preprocess_menu__account(&$variables){
+
   // get node by entity type
   $query = \Drupal::entityQuery('node');
   $query->condition('type', 'des_citations_celebres');
@@ -88,5 +90,34 @@ function b5_preprocess_menu__main(&$variables){
     $variables["infos"][$id]["icone"] = \Drupal::entityTypeManager()->getStorage('node')->load($nid)->get('field_icone')->value;
     $variables["infos"][$id]["info"] = \Drupal::entityTypeManager()->getStorage('node')->load($nid)->get('field_info')->value;
     $variables["infos"][$id]["lien"] = \Drupal::entityTypeManager()->getStorage('node')->load($nid)->get('field_lien')->value;
+  }
+}
+
+function b5_preprocess_page(&$variables){
+  $current_path = \Drupal::service('path.current')->getPath();
+  if($current_path == '/webform/ajouter_une_declaration'){
+    $current_user = \Drupal::currentUser();
+    $fields = User::load($current_user->id())->toArray();
+    
+    if(is_array($fields)){
+      switch ($fields["target_id"]) {
+        //Eleve
+        case '27':
+          // etablissement != null ? etablissement.style.display = "block": ""
+          // filiere !=null ? filiere.style.display = "none": ""
+          // situation_mat != null ? situation_mat.style.display = "none" : ""
+          // nombre_enfant != null ? nombre_enfant.style.display = "none": ""
+          // nombre_fille != null ? nombre_fille.style.display = "none": ""
+          // nombre_garcon != null ? nombre_garcon.style.display = "none": ""
+          // nombre_adoption != null ? nombre_adoption.style.display = "none": ""
+          // nombre_direct != null ? nombre_direct.style.display = "none": ""
+          // nombre_indirect != null ? nombre_indirect.style.display = "none": ""
+          // nombre_tutel != null ? nombre_tutel.style.display = "none": ""
+          break;
+        default:
+          # code...
+          break;
+      }
+    }
   }
 }
