@@ -89,6 +89,7 @@
 		let etablissement = document.querySelector('.form-item-field-etablissement')
 		let filiere = document.querySelector('.form-item-field-filiere')
 		let situation_mat = document.querySelector('.form-item-field-situation-matrimoniale')
+		let situation_mat_edit = document.querySelector('#edit-field-situation-matrimoniale')
 		let nombre_enfant = document.querySelector('.form-item-field-nombre-d-enfant-0-value')
 		let nombre_fille = document.querySelector('.form-item-field-nombre-de-fille-0-value')
 		let nombre_garcon = document.querySelector('.form-item-field-nombre-de-garcon-0-value')
@@ -96,6 +97,7 @@
 		let nombre_tutel = document.querySelector('.form-item-field-nombre-de-tutel-0-value')
 		let nombre_direct = document.querySelector('.form-item-field-nombre-de-tutel-direct-0-value')
 		let nombre_indirect = document.querySelector('.form-item-field-nombre-de-tutel-indirect-0-value')
+		let regime = document.querySelector('.field--name-field-regime')
 		
 		// if selected
 		professionField.addEventListener('change', function(e){
@@ -107,6 +109,30 @@
 		let selected = getSelectedOption(professionField).textContent.toUpperCase();
 		showIf(selected)
 
+		
+		if(situation_mat.style.display == "none"){
+			showRegime('- Aucun(e) -'.toUpperCase());
+		}
+
+	
+			situation_mat.addEventListener('change', function(e){
+				console.log(situation_mat, 'i')
+				let selected = getSelectedOption(situation_mat_edit).textContent.toUpperCase();
+				showRegime(selected)
+			})
+
+
+		function showRegime(selected2){
+			if(selected2 == "Celibataire".toUpperCase()){
+				regime.style.display = "none"
+			}else if(selected2 == "- Aucun(e) -".toUpperCase()){
+				regime.style.display = "none"
+			}else if(selected2 == "Divorcé".toUpperCase()){
+				regime.style.display = "none"
+			}else if(selected2 == "Marié".toUpperCase()){
+				regime.style.display = "block"
+			}
+		}
 
 		function showIf(selected){
 			if(selected == "Travailleur".toUpperCase()){
@@ -120,6 +146,7 @@
 				nombre_direct.style.display = "block"
 				nombre_indirect.style.display = "block"
 				nombre_tutel.style.display = "block"
+				regime.style.display = "block"
 			}else if(selected == "Eleve".toUpperCase()){
 				etablissement.style.display = "block"
 				filiere.style.display = "none"
@@ -131,6 +158,7 @@
 				nombre_direct.style.display = "none"
 				nombre_indirect.style.display = "none"
 				nombre_tutel.style.display = "none"
+				regime.style.display = "none"
 			}else if(selected == "- Aucun(e) -".toUpperCase()){
 				etablissement.style.display = "none"
 				filiere.style.display = "none"
@@ -141,6 +169,7 @@
 				nombre_adoption.style.display = "none"
 				nombre_direct.style.display = "none"
 				nombre_indirect.style.display = "none"
+				regime.style.display = "none"
 				nombre_tutel.style.display = "none"
 			}
 			else{
@@ -154,6 +183,7 @@
 				nombre_direct.style.display = "none"
 				nombre_indirect.style.display = "none"
 				nombre_tutel.style.display = "none"
+				regime.style.display = "none"
 			}
 		}
 

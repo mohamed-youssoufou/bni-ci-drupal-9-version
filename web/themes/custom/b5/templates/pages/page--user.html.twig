@@ -140,7 +140,6 @@
 </div>
 {% block javascripts %}
     <script>
-		console.log('ici')
 		let professionField = document.querySelector('.field--name-field-profession>.field__item>a')
 		let etablissement = document.querySelector('.field--name-field-etablissement')
 		let filiere = document.querySelector('.field--name-field-filiere')
@@ -154,7 +153,8 @@
     let nombre_tutel = document.querySelector('.field--name-field-nombre-de-tutel')
 
 		// if mounted 
-		let selected = professionField.textContent.toUpperCase();
+
+		let selected = professionField != null ? professionField.textContent.toUpperCase() : "- Aucun(e) -";
 		showIf(selected)
 
 		function showIf(selected){
