@@ -252,11 +252,13 @@
         "drupal/core-project-message": "^9.3",
         "drupal/core-recommended": "^9.3",
         "drupal/devel": "^4.1",
+        "drupal/email_verification": "^1.0",
         "drupal/entity_print": "^2.2",
         "drupal/features": "^3.12",
         "drupal/gin": "^3.0@beta",
         "drupal/gin_login": "^1.0",
         "drupal/gin_toolbar": "^1.0@beta",
+        "drupal/mimemail": "^1.0@alpha",
         "drupal/optgroup_taxonomy_select": "^1.1",
         "drupal/phpmailer_smtp": "^2.0",
         "drupal/recaptcha": "^3.0",
@@ -273,7 +275,9 @@
         "highcharts/export-data": "8.1.0",
         "highcharts/exporting": "8.1.0",
         "highcharts/highcharts": "8.1.0",
-        "highcharts/more": "8.1.0"
+        "highcharts/more": "8.1.0",
+        "mikehaertl/phpwkhtmltopdf": "~2.1",
+        "tecnickcom/tcpdf": "~6"
     },
     "conflict": {
         "drupal/drupal": "*"

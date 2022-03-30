@@ -20,7 +20,7 @@
 #}
 <!-- Navbar & Hero Start -->
 	<div class="container-fluid position-relative p-0"> <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-		<a href="" class="navbar-brand p-0">
+		<a href="/" class="navbar-brand p-0">
 			<h1 class="text-primary m-0">
 				<i class="fa fa-map-marker-alt me-3"></i>BAI-CI</h1>
 			<!-- <img src="img/logo.png" alt="Logo"> -->
@@ -31,7 +31,7 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<div class="navbar-nav ms-auto py-0">
 			{% for item in items %}
-				{% if loop.index <= 4 %}
+				{% if loop.index <= 5 %}
 					<a href="{{item.url}}" class="nav-item nav-link {{ item.in_active_trail == true ? 'active' : '' }}">{{item.title}}</a>
 				{% endif %}
       		{% endfor %}
@@ -40,7 +40,7 @@
 					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Salut, {{user.getAccountName()|capitalize}}</a>
 				<div class="dropdown-menu m-0">
             {% for item in items %}
-              {% if loop.index > 4 %}
+              {% if loop.index > 5 %}
 				<a href="{{item.url}}" class="dropdown-item">{{item.title}}</a>
               {% endif %}
             {% endfor %}
