@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner();
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -24,14 +24,14 @@
             $('.navbar').removeClass('sticky-top shadow-sm');
         }
     });
-    
-    
+
+
     // Dropdown on mouse hover
     const $dropdown = $(".dropdown");
     const $dropdownToggle = $(".dropdown-toggle");
     const $dropdownMenu = $(".dropdown-menu");
     const showClass = "show";
-    
+
     $(window).on("load resize", function() {
         if (this.matchMedia("(min-width: 992px)").matches) {
             $dropdown.hover(
@@ -52,8 +52,8 @@
             $dropdown.off("mouseenter mouseleave");
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -89,6 +89,25 @@
             }
         }
     });
-    
+
 })(jQuery);
+
+window.addEventListener('load', ()=> {
+  const loader = document.querySelector('.loading');
+  loader.style.display = "none";
+  let regex = /^\/user\/*/;
+  if(window.location.pathname.match(regex) || !window.location.pathname.match(/^\/$/)){
+    const topbg = document.querySelector('.hero-header');
+    const navBar = document.querySelector('.navbar');
+    if(topbg !== null){
+      topbg.style.display = "none";
+      navBar.style.position = "relative";
+      navBar.style.backgroundColor = "#14141F";
+      navBar.style.marginBottom = "4rem";
+      navBar.style.borderTop = "1px solid white";
+    }
+  }
+})
+
+
 

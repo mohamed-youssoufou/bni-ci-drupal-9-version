@@ -263,6 +263,7 @@
         "drupal/phpmailer_smtp": "^2.0",
         "drupal/recaptcha": "^3.0",
         "drupal/select2": "^1.13",
+        "drupal/term_csv_export_import": "^3.0@alpha",
         "drupal/user_email_verification": "^1.1",
         "drupal/views_bootstrap": "^4.3",
         "drupal/views_date_format_sql": "^3.0@alpha",

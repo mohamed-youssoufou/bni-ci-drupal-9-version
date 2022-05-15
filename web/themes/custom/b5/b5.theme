@@ -68,11 +68,36 @@ function bootstrap_barrio_subtheme_form_system_theme_settings_alter(&$form, Form
 //   $variables['user'] = "/user/".\Drupal::currentUser()->id();
 // }
 
+//function
+function b5_preprocess_status_messages(&$variables) {
+  dump($variables);
+}
 function b5_preprocess_menu__account(&$variables)
 {
 
   // get node by entity type
-  // dump($variables);die;
+  $is_home_page = false;
+  if(preg_match("/^\/$/", $_SERVER['REQUEST_URI'])) {
+    $is_home_page = true;
+  }
+  $variables['is_home_page'] = $is_home_page;
+  $title = "";
+  switch ($_SERVER['REQUEST_URI']){
+    case 'rechercher-mes-declarations':
+      $title = "Nos Déclarations";
+      break;
+    case 'statistique':
+      $title = "Nos Statistiques";
+      break;
+    case 'nous_contactez':
+      $title = "Nous Contactez";
+      break;
+    default:
+      $title = "";
+  }
+
+  $variables['title'] = $title;
+
   $query = \Drupal::entityQuery('node');
   $query->condition('type', 'des_citations_celebres');
   $entity_ids = $query->execute();
@@ -122,7 +147,7 @@ function b5_preprocess_page(&$variables)
           break;
           //Travailleur
         case '28':
-          if (!count($fields['field_etablissement']) && 
+          if (!count($fields['field_etablissement']) &&
               !count($fields['field_filiere']) &&
               !count($fields['field_nombre_de_fille']) &&
               !count($fields['field_nombre_de_garcon']) &&
